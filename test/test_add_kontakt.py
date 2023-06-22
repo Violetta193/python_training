@@ -14,7 +14,7 @@ def app(request):
 def test_kontakts(app):
     app.open_home_page()
     app.session.login(username="admin", password="secret")
-    app.init_kontakt_creation(
+    app.kontakt.create(
         Kontakt(first_name="anna",
                 mid_name="Maria",
                 last_name="Kalom",
@@ -31,7 +31,7 @@ def test_kontakts(app):
 def test_empty_kontakts(app):
     app.open_home_page()
     app.session.login(username="admin", password="secret")
-    app.init_kontakt_creation(
+    app.kontakt.create(
         Kontakt(first_name="",
                 mid_name="",
                 last_name="",
