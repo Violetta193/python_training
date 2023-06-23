@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
-import pytest
-from fixture.application import Application
 from model.kontakt import Kontakt
 
 
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 def test_kontakts(app):
