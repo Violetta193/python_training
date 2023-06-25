@@ -2,8 +2,6 @@
 from model.kontakt import Kontakt
 
 
-
-
 def test_kontakts(app):
     app.open_home_page()
     app.session.login(username="admin", password="secret")

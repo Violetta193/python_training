@@ -40,3 +40,30 @@ class KontaktHelper:
 
         # submit kontakt creation
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[21]").click()
+
+    def modification(self):
+        wd = self.app.wd
+        # # select first group
+        wd.find_element(By.NAME, "selected[]").click()
+        # click on Edit button
+        wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
+        #  modification kontakt
+        wd.find_element(By.NAME, "firstname").click()
+        wd.find_element(By.NAME, "firstname").clear()
+        wd.find_element(By.NAME, "firstname").send_keys("Petr")
+        wd.find_element(By.NAME, "lastname").click()
+        wd.find_element(By.NAME, "lastname").clear()
+        wd.find_element(By.NAME, "lastname").send_keys("Ivanov")
+        wd.find_element(By.NAME, "update").click()
+
+
+
+
+    def delete(self):
+        wd = self.app.wd
+        # # select first group
+        wd.find_element(By.NAME, "selected[]").click()
+        # # submit deletion
+        wd.find_element(By.XPATH, "//input[@value='Delete']").click()
+        alert_obj = wd.switch_to.alert
+        alert_obj.accept()
