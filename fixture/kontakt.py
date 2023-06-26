@@ -41,8 +41,9 @@ class KontaktHelper:
         # submit kontakt creation
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[21]").click()
 
-    def modification(self):
+    def modification(self, kontakt):
         wd = self.app.wd
+        self.app.open_home_page()
         # # select first group
         wd.find_element(By.NAME, "selected[]").click()
         # click on Edit button
@@ -50,10 +51,10 @@ class KontaktHelper:
         #  modification kontakt
         wd.find_element(By.NAME, "firstname").click()
         wd.find_element(By.NAME, "firstname").clear()
-        wd.find_element(By.NAME, "firstname").send_keys("Petr")
+        wd.find_element(By.NAME, "firstname").send_keys(kontakt.first_name)
         wd.find_element(By.NAME, "lastname").click()
         wd.find_element(By.NAME, "lastname").clear()
-        wd.find_element(By.NAME, "lastname").send_keys("Ivanov")
+        wd.find_element(By.NAME, "lastname").send_keys(kontakt.last_name)
         wd.find_element(By.NAME, "update").click()
 
 
@@ -61,6 +62,7 @@ class KontaktHelper:
 
     def delete(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # # select first group
         wd.find_element(By.NAME, "selected[]").click()
         # # submit deletion
