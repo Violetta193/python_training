@@ -4,7 +4,6 @@ from model.kontakt import Kontakt
 
 def test_kontakts(app):
     app.open_home_page()
-    app.session.login(username="admin", password="secret")
     app.kontakt.create(
         Kontakt(first_name="anna",
                 mid_name="Maria",
@@ -16,12 +15,10 @@ def test_kontakts(app):
                 home_number="9-343-3434-343",
                 e_mail="kkdfjkfd@mail.ru"))
     app.return_to_home_page()
-    app.session.logout()
 
 
 def test_empty_kontakts(app):
     app.open_home_page()
-    app.session.login(username="admin", password="secret")
     app.kontakt.create(
         Kontakt(first_name="",
                 mid_name="",
@@ -34,4 +31,3 @@ def test_empty_kontakts(app):
                 e_mail="")
     )
     app.return_to_home_page()
-    app.session.logout()

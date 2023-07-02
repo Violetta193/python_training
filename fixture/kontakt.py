@@ -9,7 +9,22 @@ class KontaktHelper:
         wd = self.app.wd
         # init kontakt creation
         wd.find_element(By.LINK_TEXT, "add new").click()
-        # fill kontakt firm
+        self._fill_kontakt(kontakt=kontakt)
+        # submit kontakt creation
+        wd.find_element(By.XPATH, "//div[@id='content']/form/input[21]").click()
+
+    def modification(self, kontakt):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # # select first group
+        wd.find_element(By.NAME, "selected[]").click()
+        # click on Edit button
+        wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
+        self._fill_kontakt(kontakt=kontakt)
+        wd.find_element(By.NAME, "update").click()
+
+    def _fill_kontakt(self, kontakt):
+        wd = self.app.wd
         wd.find_element(By.NAME, "firstname").click()
         wd.find_element(By.NAME, "firstname").clear()
         wd.find_element(By.NAME, "firstname").send_keys(kontakt.first_name)
@@ -37,28 +52,6 @@ class KontaktHelper:
         wd.find_element(By.NAME, "email").click()
         wd.find_element(By.NAME, "email").clear()
         wd.find_element(By.NAME, "email").send_keys(kontakt.e_mail)
-
-        # submit kontakt creation
-        wd.find_element(By.XPATH, "//div[@id='content']/form/input[21]").click()
-
-    def modification(self, kontakt):
-        wd = self.app.wd
-        self.app.open_home_page()
-        # # select first group
-        wd.find_element(By.NAME, "selected[]").click()
-        # click on Edit button
-        wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
-        #  modification kontakt
-        wd.find_element(By.NAME, "firstname").click()
-        wd.find_element(By.NAME, "firstname").clear()
-        wd.find_element(By.NAME, "firstname").send_keys(kontakt.first_name)
-        wd.find_element(By.NAME, "lastname").click()
-        wd.find_element(By.NAME, "lastname").clear()
-        wd.find_element(By.NAME, "lastname").send_keys(kontakt.last_name)
-        wd.find_element(By.NAME, "update").click()
-
-
-
 
     def delete(self):
         wd = self.app.wd
