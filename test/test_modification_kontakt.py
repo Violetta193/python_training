@@ -16,3 +16,4 @@ def test_modification_kontakt(app):
                         home_number="9-343-3434-343",
                         e_mail="kkdfjkfd@mail.ru"))
     app.return_to_home_page()
+# Hello world!
