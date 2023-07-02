@@ -16,8 +16,7 @@ class KontaktHelper:
     def modification(self, kontakt):
         wd = self.app.wd
         self.app.open_home_page()
-        # # select first group
-        wd.find_element(By.NAME, "selected[]").click()
+        self.select_first_kontakt()
         # click on Edit button
         wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
         self._fill_kontakt(kontakt=kontakt)
@@ -53,12 +52,20 @@ class KontaktHelper:
         wd.find_element(By.NAME, "email").clear()
         wd.find_element(By.NAME, "email").send_keys(kontakt.e_mail)
 
-    def delete(self):
+    def delete_first_kontakt(self):
         wd = self.app.wd
         self.app.open_home_page()
-        # # select first group
-        wd.find_element(By.NAME, "selected[]").click()
-        # # submit deletion
+        self.select_first_kontakt()
+        # submit deletion
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         alert_obj = wd.switch_to.alert
         alert_obj.accept()
+
+    def select_first_kontakt(self):
+        wd = self.app.wd
+        wd.find_element(By.NAME, "selected[]").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        return len(wd.find_elements(By.NAME, "selected[]"))
