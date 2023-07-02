@@ -5,6 +5,12 @@ class KontaktHelper:
     def __init__(self, app):
         self.app = app
 
+    def open_page_kontakts(self):
+        wd = self.app.wd
+        if wd.current_url.endswith("index.php"):
+            return
+        wd.find_element(By.LINK_TEXT, "home").click()
+
     def create(self, kontakt):
         wd = self.app.wd
         # init kontakt creation

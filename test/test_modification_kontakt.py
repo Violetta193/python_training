@@ -4,7 +4,7 @@ from model.kontakt import Kontakt
 def test_modification_kontakt(app):
     if app.kontakt.count() == 0:
         app.kontakt.create(Kontakt())
-    app.open_home_page()
+    app.kontakt.open_page_kontakts()
     app.kontakt.modification(
         kontakt=Kontakt(first_name="new_name",
                         mid_name="new_midname",
