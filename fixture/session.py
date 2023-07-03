@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 
@@ -21,7 +23,8 @@ class SessionHelper:
     def logout(self):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, "Logout").click()
-        wd.find_element(By.NAME,"user")
+        time.sleep(1)
+        wd.find_element(By.NAME, "user")
 
     def ensure_logout(self):
         wd = self.app.wd
