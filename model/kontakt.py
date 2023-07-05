@@ -6,7 +6,7 @@ class Kontakt:
                  last_name="", nick_name="",
                  title="", company_name="",
                  address="", home_number="",
-                 e_mail="", id=""):
+                 e_mail="", id=None):
         self.first_name = first_name
         self.mid_name = mid_name
         self.last_name = last_name
